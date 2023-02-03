@@ -11,16 +11,9 @@ const dbo = require("../db/conn.js");
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
  
- 
 // This section will help you get a list of all the workHistorys.
 workHistoryRoutes.route("/workHistory").get(async function (req, res) {
-    //const client = dbo.getClient();
-    //client.connect();
-    //console.log('req: ', req);
     let db_connect = await dbo.getDb();
-    //const cursor = db_connect.collection('history').find({'company_name': 'Postlight'});
-    //console.log(cursor);
-    //console.log('db_connect: ', db_connect);
     db_connect
     .collection("history")
     .find({})

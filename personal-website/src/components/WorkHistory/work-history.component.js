@@ -27,19 +27,20 @@ export default function WorkHistoryBlock() {
 
     useEffect(() => {
         async function getWorkHistory() {
-          await fetch(`http://localhost:4000/workHistory/`, {
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Content-Type": "application/json",
-            }
-          }).then(res => res.json())
-          .then(data => {
-            setWorkHistory(data);
-          }).catch(err => {
-            const message = `An error occured: ${err}`;
-            window.alert(message);
-            return
-          });
+            await fetch('http://localhost:4000/workHistory', {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Content-Type": "application/json",
+                }
+            }).then(res => res.json())
+            .then(data => {
+                setWorkHistory(data);
+            }).catch(err => {
+                const message = `An error occured: ${err}`;
+                console.log(message);
+                return
+            });
+                        
         }
       
         getWorkHistory();
