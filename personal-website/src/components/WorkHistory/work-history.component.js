@@ -1,26 +1,32 @@
 import React, { useState, useEffect } from 'react';
+import { Container, Card, CardHeader, CardContent } from '@mui/material';
 
 const WorkHistory = (props) => { 
     const summary = props.description;
     const summaryItems = summary.map((item) => (
-        <li key={item}>{item}</li>
+        <p key={item}>{item}</p>
     ));
+    const extraItems = props.extra_points.map((item)=> (
+        <p key={item}> {item} </p>
+    ));
+    const company_logo = require(`${props.company_logo}`);
     return (
-    <div className="flex-col">
-        <div className="flex-row grow">
-            <img src={require('./logos/postlight.jpeg')} alt="company-logo" width="50"/>
-            <h4>{props.company_name}</h4>
-            <p>{props.job_title}</p>
-            <p>{props.location}</p>
-        </div>
-        <div>
-            <ul>
-                {summaryItems}
-            </ul>
-        </div>
-    </div>
+        <Card sx={{m: 4}}>
+            <CardHeader
+                avatar={<img src={company_logo} alt="company-logo" width="50"/>}
+                title={props.company_name + ', ' + props.job_location}
+                subheader={props.job_title + ', ' + props.duration}>
+            </CardHeader>
+            <CardContent>
+                {/* <ul> */}
+                    {summaryItems}
+                {/* </ul>   */}
+                {extraItems}
+            </CardContent>
+        </Card>        
     );
 };
+
 
 export default function WorkHistoryBlock() {
     const [workHistory, setWorkHistory] = useState([]);
@@ -56,8 +62,10 @@ export default function WorkHistoryBlock() {
                 company_logo={history.company_logo}
                 company_name={history.company_name}
                 job_title={history.job_title}
-                location={history.location}
+                job_location={history.job_location}
+                duration={history.duration}
                 description={history.description}
+                extra_points={history.extra_points}
                 />
             );
             });
@@ -67,7 +75,10 @@ export default function WorkHistoryBlock() {
     return (
         <div>
             <h1 className="text-3xl font-bold underline" >Work History</h1>
-            { workHistoryList() }
+            <Container>
+                { workHistoryList() }
+            </Container>
         </div>
+        
     );
 }

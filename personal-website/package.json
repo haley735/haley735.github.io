@@ -4,6 +4,9 @@
   "private": true,
   "homepage": "https://haley735.github.io",
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.7",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -40,6 +43,8 @@
     ]
   },
   "devDependencies": {
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.11.0",
     "axios": "^1.2.5",
     "express": "^4.18.2",
     "gh-pages": "^5.0.0",
